@@ -1,0 +1,47 @@
+# =====================================================================
+# CONFIGURACIÓN DE OPTIMIZACIÓN - COLIMAN CONSTRUCTION
+# Diseñado para servidores Apache (AccuWebHosting / LAMP)
+# =====================================================================
+
+# 1. Compresión GZIP (Acelera la descarga de archivos de texto)
+<IfModule mod_deflate.c>
+  # Activar compresión
+  SetOutputFilter DEFLATE
+  
+  # Comprimir tipos de archivo comunes
+  AddOutputFilterByType DEFLATE text/html
+  AddOutputFilterByType DEFLATE text/plain
+  AddOutputFilterByType DEFLATE text/xml
+  AddOutputFilterByType DEFLATE text/css
+  AddOutputFilterByType DEFLATE text/javascript
+  AddOutputFilterByType DEFLATE application/javascript
+  AddOutputFilterByType DEFLATE application/x-javascript
+  AddOutputFilterByType DEFLATE application/json
+  AddOutputFilterByType DEFLATE image/svg+xml
+  
+  # Evitar compresión en navegadores antiguos con bugs
+  BrowserMatch ^Mozilla/4 gzip-only-text/html
+  BrowserMatch ^Mozilla/4\.0[678] no-gzip
+  BrowserMatch \bMSIE !no-gzip !gzip-only-text/html
+</IfModule>
+
+# 2. Caché del Navegador (Expires Headers)
+# Como Vite agrega Hashes únicos a los archivos compilados,
+# podemos cachearlos de manera agresiva sin riesgo a que no se actualicen al subir cambios.
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresDefault "access plus 1 month"
+  
+  # Cachear imágenes y tipografías por 1 año
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType font/ttf "access plus 1 year"
+  
+  # Cachear CSS y JS por 1 año (Vite se encarga de cambiar el hash si los editas)
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType text/javascript "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType application/x-javascript "access plus 1 year"
+  
+  # El HTML no se cachea a largo plazo para asegurar actualizaciones inmediatas del sitio
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>

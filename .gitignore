@@ -21,7 +21,6 @@ pids
 
 # Gatsby files
 .cache/
-public
 
 # Comment this out if you want to publish your site's builds
 dist/
