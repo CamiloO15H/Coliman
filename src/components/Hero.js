@@ -8,7 +8,7 @@ export function initHero() {
   const heroMedia = document.querySelector("#hero-media");
   if (heroMedia) {
     heroMedia.innerHTML = `
-      <video autoplay muted loop playsinline src="./assets/Video.mp4" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+      <video autoplay muted loop playsinline src="./Video.mp4" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
     `;
   }
 
