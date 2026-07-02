@@ -33,6 +33,9 @@ export function initNav() {
         const navLinks = document.querySelector(".nav-links");
         if (navLinks && navLinks.classList.contains("is-open")) {
           navLinks.classList.remove("is-open");
+          document.body.style.overflow = ""; // Unlock scrolling when menu closes
+          const menuBtn = document.querySelector(".menu-btn");
+          if (menuBtn) menuBtn.setAttribute("aria-expanded", "false");
         }
         
         window.scrollTo({

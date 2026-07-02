@@ -203,8 +203,53 @@ a { color: inherit; text-decoration: none; }
 .nav .menu-btn { display: none; background: none; border: 0; color: inherit; padding: 8px; }
 
 @media (max-width: 860px) {
-  .nav-links, .nav .cta { display: none; }
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(13, 13, 13, 0.98); /* Matte Black brand color */
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    z-index: 40;
+    padding: 120px var(--gutter) 48px;
+    gap: 32px;
+    align-items: flex-start;
+  }
+  .nav-links.is-open {
+    display: flex;
+    animation: fadeIn 300ms var(--ease-standard);
+  }
+  .nav-links a {
+    font-size: 28px;
+    font-family: var(--font-display);
+    font-weight: var(--w-semibold);
+    text-transform: uppercase;
+    color: #fff;
+    opacity: 0;
+    transform: translateY(16px);
+    animation: slideUpFade 400ms var(--ease-standard) forwards;
+  }
+  .nav-links a:nth-child(1) { animation-delay: 80ms; }
+  .nav-links a:nth-child(2) { animation-delay: 130ms; }
+  .nav-links a:nth-child(3) { animation-delay: 180ms; }
+  .nav-links a:nth-child(4) { animation-delay: 230ms; }
+  .nav-links a:nth-child(5) { animation-delay: 280ms; }
+
+  .nav .cta { display: none; }
   .nav .menu-btn { display: block; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUpFade {
+  to {
+    opacity: 1;
+    transform: none;
+  }
 }
 
 /* ---------- Hero ---------- */
@@ -222,6 +267,13 @@ a { color: inherit; text-decoration: none; }
   z-index: -2;
 }
 .hero__media svg { width: 100%; height: 100%; }
+.hero__media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.15); /* Zoom in slightly to crop out the video's top and bottom black bars */
+}
 .hero__overlay {
   position: absolute;
   top: -1px; bottom: -1px; left: -1px; right: -1px;
