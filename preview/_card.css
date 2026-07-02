@@ -1,0 +1,16 @@
+/* Shared card chrome for preview cards.
+   Cards are ~700px wide; height varies per card. */
+@import url("../colors_and_type.css");
+
+* { box-sizing: border-box; }
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body { padding: 24px; }
+.card-stage { width: 100%; }

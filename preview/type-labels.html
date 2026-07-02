@@ -1,0 +1,64 @@
+<!doctype html>
+<!-- @dsCard group="Type" name="Type — labels & metrics" subtitle="Eyebrows, chips, metrics, captions" viewport="700x340" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Labels & eyebrows</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  .col { display: flex; flex-direction: column; gap: 16px; }
+  .b { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: var(--fg-muted); text-transform: uppercase; }
+  .ex { padding: 14px 16px; border: 1px solid var(--border); }
+  .eyebrow { font-family: var(--font-display); font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--color-blue); }
+  .h-after { font-family: var(--font-display); font-weight: 700; font-size: 24px; letter-spacing: -0.015em; margin-top: 8px; }
+  .chip { display: inline-block; padding: 4px 10px; font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; border: 1px solid var(--color-blue); color: var(--color-blue); }
+  .chip.solid { background: var(--color-blue); color: #fff; border-color: var(--color-blue); }
+  .chip.sand { background: var(--color-sand); color: var(--color-black); border-color: var(--color-sand); }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .tag-row { display: flex; gap: 6px; align-items: center; }
+  .num { font-family: var(--font-display); font-weight: 700; font-size: 28px; letter-spacing: -0.01em; font-variant-numeric: tabular-nums; }
+  .caption { font-family: var(--font-display); font-size: 11px; font-weight: 500; letter-spacing: 0.06em; color: var(--fg-muted); text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="card-stage">
+<div class="grid">
+  <div class="col">
+    <div>
+      <div class="b">Eyebrow + heading</div>
+      <div class="ex">
+        <div class="eyebrow">Scope · 02</div>
+        <div class="h-after">Suspended grid &amp; ACT</div>
+      </div>
+    </div>
+    <div>
+      <div class="b">Chips / tags</div>
+      <div class="ex">
+        <div class="row">
+          <span class="chip">In progress</span>
+          <span class="chip solid">On schedule</span>
+          <span class="chip sand">Submittal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div>
+      <div class="b">Metric + caption</div>
+      <div class="ex">
+        <div class="num">18,000 sq ft</div>
+        <div class="caption">Partitions framed · 12 working days</div>
+      </div>
+    </div>
+    <div>
+      <div class="b">Label</div>
+      <div class="ex">
+        <div class="caption" style="color:var(--color-black)">DRAWING REV · A-203 · ISSUED 04 / 12</div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- @dsCard group="Colors" name="Color pairings" subtitle="Sanctioned foreground/background combinations" viewport="700x340" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Color pairings</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  .pair { aspect-ratio: 1.4 / 1; padding: 18px; display: flex; flex-direction: column; justify-content: space-between; border: 1px solid var(--border); }
+  .pair .eyebrow { font-family: var(--font-display); font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
+  .pair h { font-family: var(--font-display); font-weight: 700; font-size: 22px; line-height: 1.05; letter-spacing: -0.015em; text-transform: uppercase; display: block; }
+  .p-1 { background: #fff; color: #353f51; }
+  .p-2 { background: #d3c6b7; color: #212121; border-color: #b8aa97; }
+  .p-3 { background: #353f51; color: #fff; border-color: #232934; }
+  .p-4 { background: #212121; color: #d3c6b7; border-color: #2a2826; }
+  .p-5 { background: #fff; color: #212121; }
+  .p-6 { background: #d3c6b7; color: #353f51; border-color: #b8aa97; }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="row">
+    <div class="pair p-1"><span class="eyebrow">PRIMARY</span><h>Blue<br>on White</h></div>
+    <div class="pair p-2"><span class="eyebrow">EDITORIAL</span><h>Black<br>on Sand</h></div>
+    <div class="pair p-3"><span class="eyebrow">INVERSE</span><h>White<br>on Blue</h></div>
+    <div class="pair p-4"><span class="eyebrow">DEEP</span><h>Sand<br>on Black</h></div>
+    <div class="pair p-5"><span class="eyebrow">DEFAULT</span><h>Black<br>on White</h></div>
+    <div class="pair p-6"><span class="eyebrow">BRAND CHORD</span><h>Blue<br>on Sand</h></div>
+  </div>
+</div>
+</body>
+</html>

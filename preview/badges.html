@@ -1,0 +1,47 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Badges & status" subtitle="Tags, semantic statuses, inline dots" viewport="700x280" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Badges & tags</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .b { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: var(--fg-muted); text-transform: uppercase; margin: 0 0 10px; }
+  .row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 22px; }
+  .tag { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; padding: 5px 10px; border: 1px solid var(--color-blue); color: var(--color-blue); }
+  .tag.solid { background: var(--color-blue); color: #fff; }
+  .tag.sand { background: var(--color-sand); color: var(--color-black); border-color: var(--color-sand); }
+  .tag.success { background: #4a7a4c; color: #fff; border-color: #4a7a4c; }
+  .tag.warn { background: #b88234; color: #fff; border-color: #b88234; }
+  .tag.danger { background: #9b3a31; color: #fff; border-color: #9b3a31; }
+  .tag.muted { border-color: var(--neutral-400); color: var(--neutral-600); }
+  .pill { border-radius: 999px; }
+  .status { display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; }
+  .dot { width: 8px; height: 8px; border-radius: 999px; }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="b">Tags · outline / solid / sand</div>
+  <div class="row">
+    <span class="tag">Submittal</span>
+    <span class="tag solid">In progress</span>
+    <span class="tag sand">RFI · 014</span>
+    <span class="tag muted">Archived</span>
+    <span class="tag pill">Trade · Framing</span>
+  </div>
+  <div class="b">Semantic status</div>
+  <div class="row">
+    <span class="tag success">On schedule</span>
+    <span class="tag warn">Hold · RFI open</span>
+    <span class="tag danger">Stop-work</span>
+  </div>
+  <div class="b">Inline status dots</div>
+  <div class="row">
+    <span class="status" style="color:#4a7a4c"><span class="dot" style="background:#4a7a4c"></span>Approved 04/12</span>
+    <span class="status" style="color:#b88234"><span class="dot" style="background:#b88234"></span>Pending GC review</span>
+    <span class="status" style="color:#9b3a31"><span class="dot" style="background:#9b3a31"></span>Non-conforming · returned</span>
+  </div>
+</div>
+</body>
+</html>

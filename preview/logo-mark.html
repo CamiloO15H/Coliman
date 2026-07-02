@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Logo mark" subtitle="C-mark for favicons, app icons, square contexts" viewport="700x260" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo Mark</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .row { display: flex; gap: 16px; }
+  .tile {
+    flex: 1;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .tile img { width: 120px; height: auto; }
+  .tile[data-bg="white"]  { background: #fff; }
+  .tile[data-bg="sand"]   { background: var(--color-sand); }
+  .tile[data-bg="blue"]   { background: var(--color-blue); border-color: var(--blue-700); }
+  .tile[data-bg="black"]  { background: var(--color-black); border-color: var(--neutral-700); }
+  .lbl {
+    position: absolute;
+    bottom: 10px; left: 12px;
+    font-size: 10px; letter-spacing: 0.16em; font-weight: 600;
+    text-transform: uppercase; color: var(--fg-muted);
+  }
+  .tile[data-bg="blue"] .lbl, .tile[data-bg="black"] .lbl { color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="row">
+    <div class="tile" data-bg="white"><img src="../assets/logo-mark-blue.svg"><span class="lbl">Mark · Blue</span></div>
+    <div class="tile" data-bg="sand"><img src="../assets/logo-mark-black.svg"><span class="lbl">Mark · Black</span></div>
+    <div class="tile" data-bg="blue"><img src="../assets/logo-mark-white.svg"><span class="lbl">Mark · White</span></div>
+    <div class="tile" data-bg="black"><img src="../assets/logo-mark-sand.svg"><span class="lbl">Mark · Sand</span></div>
+  </div>
+</div>
+</body>
+</html>

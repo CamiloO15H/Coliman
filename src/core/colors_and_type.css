@@ -1,0 +1,263 @@
+/* =====================================================================
+   Coliman Construction Service — Colors & Type
+   Single source of truth for foundational design tokens.
+   ===================================================================== */
+
+@font-face {
+  font-family: "Vogie";
+  src: url("./fonts/VogieVariable-VF.ttf") format("truetype-variations");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---------- Brand palette ---------- */
+  --color-sand:  #d3c6b7;   /* Materiality, environment */
+  --color-blue:  #353f51;   /* Stability, control, professionalism — primary brand */
+  --color-black: #212121;   /* Strength, character, authority */
+  --color-white: #ffffff;
+
+  /* Neutral scale (tonal, derived from Sand + Black) */
+  --neutral-50:  #f7f5f1;
+  --neutral-100: #efeae3;
+  --neutral-200: #e3dccf;
+  --neutral-300: #d3c6b7;   /* = Sand */
+  --neutral-400: #a89c8e;
+  --neutral-500: #7a7268;
+  --neutral-600: #524d46;
+  --neutral-700: #3a3733;
+  --neutral-800: #2a2826;
+  --neutral-900: #212121;   /* = Black */
+
+  /* Blue tonal scale (tints/shades of brand Blue) */
+  --blue-50:  #eef0f4;
+  --blue-100: #d8dce4;
+  --blue-200: #b1bac9;
+  --blue-300: #8794a9;
+  --blue-400: #5e6c83;
+  --blue-500: #353f51;       /* = Blue */
+  --blue-600: #2c3443;
+  --blue-700: #232934;
+  --blue-800: #1a1f27;
+  --blue-900: #11141a;
+
+  /* Semantic colors (used sparingly — system is restrained) */
+  --color-success: #4a7a4c;
+  --color-warning: #b88234;
+  --color-danger:  #9b3a31;
+  --color-info:    var(--blue-400);
+
+  /* ---------- Surfaces / foreground tokens ---------- */
+  --bg:           var(--color-white);
+  --bg-soft:      var(--neutral-50);
+  --bg-muted:     var(--neutral-100);
+  --bg-inverse:   var(--blue-500);
+  --bg-deep:      var(--neutral-900);
+
+  --fg:           var(--color-black);
+  --fg-secondary: var(--neutral-600);
+  --fg-muted:     var(--neutral-500);
+  --fg-on-dark:   var(--neutral-50);
+  --fg-on-sand:   var(--blue-700);
+
+  --border:        var(--neutral-200);
+  --border-strong: var(--neutral-400);
+  --border-dark:   var(--blue-700);
+
+  /* ---------- Type ---------- */
+  --font-display: "Vogie", "Eurostile", "Bahnschrift", "Arial Narrow", sans-serif;
+  --font-body:    "Vogie", "Eurostile", "Bahnschrift", "Arial Narrow", sans-serif;
+  --font-mono:    "JetBrains Mono", ui-monospace, "SF Mono", Menlo, monospace;
+
+  /* Weights — Vogie is variable 100–900 */
+  --w-light:    300;
+  --w-regular:  400;
+  --w-medium:   500;
+  --w-semibold: 600;
+  --w-bold:     700;
+  --w-black:    800;
+
+  /* Modular scale (1.250 — Major Third) */
+  --fs-12: 0.75rem;
+  --fs-14: 0.875rem;
+  --fs-16: 1rem;
+  --fs-18: 1.125rem;
+  --fs-20: 1.25rem;
+  --fs-24: 1.5rem;
+  --fs-30: 1.875rem;
+  --fs-36: 2.25rem;
+  --fs-48: 3rem;
+  --fs-60: 3.75rem;
+  --fs-72: 4.5rem;
+  --fs-96: 6rem;
+
+  --lh-tight:   1.05;
+  --lh-snug:    1.2;
+  --lh-normal:  1.45;
+  --lh-relaxed: 1.6;
+
+  --ls-tight:   -0.02em;
+  --ls-normal:  0;
+  --ls-wide:    0.04em;
+  --ls-eyebrow: 0.16em;   /* All-caps eyebrows / chips */
+
+  /* ---------- Spacing (4-pt base) ---------- */
+  --s-0:   0;
+  --s-1:   0.25rem;   /* 4 */
+  --s-2:   0.5rem;    /* 8 */
+  --s-3:   0.75rem;   /* 12 */
+  --s-4:   1rem;      /* 16 */
+  --s-5:   1.5rem;    /* 24 */
+  --s-6:   2rem;      /* 32 */
+  --s-7:   2.5rem;    /* 40 */
+  --s-8:   3rem;      /* 48 */
+  --s-9:   4rem;      /* 64 */
+  --s-10:  5rem;      /* 80 */
+  --s-11:  6rem;      /* 96 */
+  --s-12:  8rem;      /* 128 */
+
+  /* ---------- Radii — restrained, mostly square ---------- */
+  --r-0:   0;
+  --r-1:   2px;
+  --r-2:   4px;
+  --r-3:   6px;
+  --r-pill: 999px;
+
+  /* ---------- Borders / strokes ---------- */
+  --stroke-hair:   1px;
+  --stroke-rule:   1.5px;
+  --stroke-strong: 2px;
+
+  /* ---------- Shadows (low elevation; this is an industrial brand) ---------- */
+  --shadow-1: 0 1px 2px rgba(33, 33, 33, 0.06);
+  --shadow-2: 0 2px 6px rgba(33, 33, 33, 0.08), 0 1px 2px rgba(33, 33, 33, 0.04);
+  --shadow-3: 0 8px 24px rgba(33, 33, 33, 0.10), 0 2px 4px rgba(33, 33, 33, 0.04);
+  --shadow-inset: inset 0 0 0 1px var(--border);
+
+  /* ---------- Motion ---------- */
+  --ease-standard: cubic-bezier(0.2, 0.0, 0.0, 1.0);
+  --ease-emphasis: cubic-bezier(0.3, 0.0, 0.1, 1.0);
+  --dur-fast:   120ms;
+  --dur-medium: 220ms;
+  --dur-slow:   360ms;
+
+  /* ---------- Layout ---------- */
+  --container:        1200px;
+  --container-narrow: 880px;
+  --container-wide:   1440px;
+  --gutter:           clamp(1rem, 4vw, 3rem);
+}
+
+/* =====================================================================
+   Semantic type roles
+   Use these classes rather than raw font-size where possible.
+   ===================================================================== */
+
+html { font-family: var(--font-body); color: var(--fg); background: var(--bg); }
+body { font-family: var(--font-body); font-weight: var(--w-regular); line-height: var(--lh-normal); }
+
+.eyebrow,
+[data-role="eyebrow"] {
+  font-family: var(--font-display);
+  font-size: var(--fs-12);
+  font-weight: var(--w-semibold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+  color: var(--blue-500);
+}
+
+.h-display,
+[data-role="display"] {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 7vw, var(--fs-96));
+  font-weight: var(--w-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+  text-transform: uppercase;
+}
+
+h1, .h1, [data-role="h1"] {
+  font-family: var(--font-display);
+  font-size: clamp(2.25rem, 4.5vw, var(--fs-60));
+  font-weight: var(--w-bold);
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-tight);
+}
+
+h2, .h2, [data-role="h2"] {
+  font-family: var(--font-display);
+  font-size: clamp(1.875rem, 3.5vw, var(--fs-48));
+  font-weight: var(--w-semibold);
+  line-height: var(--lh-snug);
+  letter-spacing: var(--ls-tight);
+}
+
+h3, .h3, [data-role="h3"] {
+  font-family: var(--font-display);
+  font-size: var(--fs-30);
+  font-weight: var(--w-semibold);
+  line-height: var(--lh-snug);
+}
+
+h4, .h4, [data-role="h4"] {
+  font-family: var(--font-display);
+  font-size: var(--fs-24);
+  font-weight: var(--w-semibold);
+  line-height: var(--lh-snug);
+}
+
+h5, .h5, [data-role="h5"] {
+  font-family: var(--font-display);
+  font-size: var(--fs-20);
+  font-weight: var(--w-semibold);
+  line-height: var(--lh-snug);
+}
+
+p, .body, [data-role="body"] {
+  font-family: var(--font-body);
+  font-size: var(--fs-16);
+  font-weight: var(--w-regular);
+  line-height: var(--lh-relaxed);
+  color: var(--fg);
+}
+
+.body-lg, [data-role="body-lg"] {
+  font-size: var(--fs-18);
+  line-height: var(--lh-relaxed);
+}
+
+.body-sm, [data-role="body-sm"], small {
+  font-size: var(--fs-14);
+  line-height: var(--lh-normal);
+}
+
+.caption, [data-role="caption"] {
+  font-family: var(--font-display);
+  font-size: var(--fs-12);
+  font-weight: var(--w-medium);
+  color: var(--fg-muted);
+  letter-spacing: var(--ls-wide);
+}
+
+.label, [data-role="label"] {
+  font-family: var(--font-display);
+  font-size: var(--fs-12);
+  font-weight: var(--w-semibold);
+  letter-spacing: var(--ls-eyebrow);
+  text-transform: uppercase;
+}
+
+.metric, [data-role="metric"] {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, var(--fs-72));
+  font-weight: var(--w-bold);
+  line-height: 1;
+  letter-spacing: var(--ls-tight);
+  font-variant-numeric: tabular-nums;
+}
+
+code, kbd, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+}

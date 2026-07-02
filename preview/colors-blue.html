@@ -1,0 +1,33 @@
+<!doctype html>
+<!-- @dsCard group="Colors" name="Blue scale" subtitle="Tints and shades of brand Blue" viewport="700x180" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Blue scale</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .scale { display: grid; grid-template-columns: repeat(10, 1fr); gap: 4px; }
+  .step { aspect-ratio: 1 / 1.2; position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 8px; font-family: var(--font-display); }
+  .step .n { font-size: 11px; font-weight: 700; letter-spacing: 0.04em; }
+  .step .h { font-size: 9px; letter-spacing: 0.08em; opacity: 0.7; }
+  .legend { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; color: var(--fg-muted); margin-bottom: 10px; }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="legend">Blue — tints &amp; shades</div>
+  <div class="scale">
+    <div class="step" style="background:#eef0f4;color:#212121"><span class="n">50</span><span class="h">eef0f4</span></div>
+    <div class="step" style="background:#d8dce4;color:#212121"><span class="n">100</span><span class="h">d8dce4</span></div>
+    <div class="step" style="background:#b1bac9;color:#212121"><span class="n">200</span><span class="h">b1bac9</span></div>
+    <div class="step" style="background:#8794a9;color:#fff"><span class="n">300</span><span class="h">8794a9</span></div>
+    <div class="step" style="background:#5e6c83;color:#fff"><span class="n">400</span><span class="h">5e6c83</span></div>
+    <div class="step" style="background:#353f51;color:#fff"><span class="n">500</span><span class="h">353f51</span></div>
+    <div class="step" style="background:#2c3443;color:#fff"><span class="n">600</span><span class="h">2c3443</span></div>
+    <div class="step" style="background:#232934;color:#fff"><span class="n">700</span><span class="h">232934</span></div>
+    <div class="step" style="background:#1a1f27;color:#fff"><span class="n">800</span><span class="h">1a1f27</span></div>
+    <div class="step" style="background:#11141a;color:#fff"><span class="n">900</span><span class="h">11141a</span></div>
+  </div>
+</div>
+</body>
+</html>

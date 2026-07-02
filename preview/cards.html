@@ -1,0 +1,49 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Project cards" subtitle="Default and inverse card patterns" viewport="700x340" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Cards</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .card { border: 1px solid var(--border); background: #fff; }
+  .card .image { aspect-ratio: 16 / 9; background: linear-gradient(135deg, #353f51 0%, #232934 100%); position: relative; }
+  .card .image::after { content: ""; position: absolute; inset: 0; background: repeating-linear-gradient(90deg, transparent 0, transparent 24px, rgba(255,255,255,0.04) 24px, rgba(255,255,255,0.04) 25px); }
+  .card .body { padding: 18px 20px 20px; }
+  .card .eyebrow { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-blue); }
+  .card .title { font-family: var(--font-display); font-weight: 700; font-size: 20px; letter-spacing: -0.01em; margin-top: 8px; line-height: 1.15; }
+  .card .meta { font-family: var(--font-display); font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--fg-muted); margin-top: 10px; display: flex; gap: 12px; }
+  .card .meta span { display: inline-flex; align-items: center; gap: 6px; }
+  .card .meta span::before { content: ""; width: 4px; height: 4px; background: var(--neutral-400); }
+  .card.inverse { background: var(--color-blue); border-color: var(--blue-700); color: #fff; }
+  .card.inverse .eyebrow { color: var(--color-sand); }
+  .card.inverse .title { color: #fff; }
+  .card.inverse .meta { color: rgba(255,255,255,0.65); }
+  .card.inverse .meta span::before { background: var(--color-sand); }
+  .card.inverse .image { background: var(--blue-700); }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="grid">
+    <div class="card">
+      <div class="image"></div>
+      <div class="body">
+        <div class="eyebrow">Healthcare · Phase II</div>
+        <div class="title">Northgate Medical Center</div>
+        <div class="meta"><span>62,000 sq ft</span><span>14 weeks</span></div>
+      </div>
+    </div>
+    <div class="card inverse">
+      <div class="image"></div>
+      <div class="body">
+        <div class="eyebrow">Education · K-12</div>
+        <div class="title">Crestview Elementary</div>
+        <div class="meta"><span>ACT &amp; framing</span><span>On schedule</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

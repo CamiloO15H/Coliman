@@ -1,0 +1,55 @@
+<!doctype html>
+<!-- @dsCard group="Spacing" name="Radii & elevation" subtitle="Square by default, low-elevation shadows" viewport="700x330" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Radii & elevation</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+  .item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .swatch { width: 80px; height: 80px; background: var(--color-blue); border: 1px solid var(--blue-700); }
+  .lbl { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; }
+  .meta { font-family: var(--font-display); font-size: 10px; letter-spacing: 0.08em; color: var(--fg-muted); }
+  hr { border: none; height: 1px; background: var(--border); margin: 28px 0 24px; }
+  .elev-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+  .elev { background: #fff; padding: 18px; display: flex; align-items: center; justify-content: center; height: 88px; }
+  .e-0 { border: 1px solid var(--border); }
+  .e-1 { box-shadow: 0 1px 2px rgba(33,33,33,0.06); border: 1px solid var(--border); }
+  .e-2 { box-shadow: 0 2px 6px rgba(33,33,33,0.08), 0 1px 2px rgba(33,33,33,0.04); }
+  .e-3 { box-shadow: 0 8px 24px rgba(33,33,33,0.10), 0 2px 4px rgba(33,33,33,0.04); }
+  .elev-name { font-family: var(--font-display); font-weight: 700; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .elev-meta { font-family: var(--font-display); font-size: 10px; color: var(--fg-muted); margin-top: 4px; letter-spacing: 0.08em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="grid">
+    <div class="item"><div class="swatch" style="border-radius:0"></div><div class="lbl">r-0</div><div class="meta">0 PX · DEFAULT</div></div>
+    <div class="item"><div class="swatch" style="border-radius:2px"></div><div class="lbl">r-1</div><div class="meta">2 PX</div></div>
+    <div class="item"><div class="swatch" style="border-radius:4px"></div><div class="lbl">r-2</div><div class="meta">4 PX</div></div>
+    <div class="item"><div class="swatch" style="border-radius:6px"></div><div class="lbl">r-3</div><div class="meta">6 PX</div></div>
+    <div class="item"><div class="swatch" style="border-radius:999px"></div><div class="lbl">pill</div><div class="meta">CHIPS ONLY</div></div>
+  </div>
+  <hr>
+  <div class="elev-grid">
+    <div>
+      <div class="elev e-0"><span class="elev-name">Flat</span></div>
+      <div class="elev-meta">SHADOW-0 · BORDER ONLY</div>
+    </div>
+    <div>
+      <div class="elev e-1"><span class="elev-name">Raised</span></div>
+      <div class="elev-meta">SHADOW-1 · CARD HOVER</div>
+    </div>
+    <div>
+      <div class="elev e-2"><span class="elev-name">Floating</span></div>
+      <div class="elev-meta">SHADOW-2 · MENUS</div>
+    </div>
+    <div>
+      <div class="elev e-3"><span class="elev-name">Modal</span></div>
+      <div class="elev-meta">SHADOW-3 · DIALOGS</div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

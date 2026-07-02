@@ -1,0 +1,107 @@
+{
+  "plugins": [
+    "react",
+    "import"
+  ],
+  "rules": {
+    "react/forbid-elements": [
+      "warn",
+      {
+        "forbid": []
+      }
+    ],
+    "no-restricted-imports": [
+      "warn",
+      {
+        "patterns": [
+          {
+            "group": [
+              "app.js",
+              "placeholders.js"
+            ],
+            "message": "Import design-system components from 'index.js', not component internals."
+          }
+        ]
+      }
+    ],
+    "no-restricted-syntax": [
+      "warn",
+      {
+        "selector": "Literal[value=/#[0-9a-fA-F]{3,8}\\b/]",
+        "message": "Raw hex color — use a design-system color token via var()."
+      },
+      {
+        "selector": "Literal[value=/\\b\\d+px\\b/]",
+        "message": "Raw px value — use a design-system spacing token via var()."
+      },
+      {
+        "selector": "Literal[value=/font-family\\s*:\\s*(?!['\\\"]?(?:Archivo|Inter|JetBrains Mono))/i]",
+        "message": "Font not provided by the design system. Available: Archivo, Inter, JetBrains Mono."
+      }
+    ]
+  },
+  "overrides": [
+    {
+      "files": [
+        "**/index.js"
+      ],
+      "rules": {
+        "no-restricted-imports": "off"
+      }
+    }
+  ],
+  "x-omelette": {
+    "components": {},
+    "tokens": [
+      "--c-bg",
+      "--c-black",
+      "--c-blue",
+      "--c-blue-12",
+      "--c-blue-80",
+      "--c-ink",
+      "--c-line",
+      "--c-mute",
+      "--c-paper",
+      "--c-sand",
+      "--c-sand-25",
+      "--c-sand-50",
+      "--container",
+      "--ff-body",
+      "--ff-display",
+      "--ff-mono",
+      "--gutter",
+      "--radius-md",
+      "--radius-sm",
+      "--t-fast",
+      "--t-med"
+    ],
+    "tokenKinds": {
+      "--c-sand": "color",
+      "--c-sand-50": "color",
+      "--c-sand-25": "color",
+      "--c-blue": "color",
+      "--c-blue-80": "color",
+      "--c-blue-12": "color",
+      "--c-black": "color",
+      "--c-ink": "color",
+      "--c-bg": "color",
+      "--c-paper": "color",
+      "--c-line": "color",
+      "--c-mute": "color",
+      "--ff-display": "font",
+      "--ff-body": "font",
+      "--ff-mono": "font",
+      "--container": "spacing",
+      "--gutter": "spacing",
+      "--radius-sm": "radius",
+      "--radius-md": "radius",
+      "--t-fast": "other",
+      "--t-med": "other"
+    },
+    "fontFamilies": [
+      "Archivo",
+      "Inter",
+      "JetBrains Mono"
+    ]
+  }
+}

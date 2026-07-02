@@ -1,0 +1,46 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Logo lockup" subtitle="Full lockup on white, sand, blue, black" viewport="700x400" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Logo</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .tile {
+    height: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .tile img { height: 100px; width: auto; max-width: 80%; }
+  .tile[data-bg="white"]  { background: #fff; }
+  .tile[data-bg="sand"]   { background: var(--color-sand); }
+  .tile[data-bg="blue"]   { background: var(--color-blue); border-color: var(--blue-700); }
+  .tile[data-bg="black"]  { background: var(--color-black); border-color: var(--neutral-700); }
+  .tile .lbl {
+    position: absolute;
+    bottom: 10px;
+    left: 12px;
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: var(--fg-muted);
+  }
+  .tile[data-bg="blue"] .lbl, .tile[data-bg="black"] .lbl { color: rgba(255,255,255,0.5); }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="grid">
+    <div class="tile" data-bg="white"><img src="../assets/logo-blue.svg"><span class="lbl">Blue / White</span></div>
+    <div class="tile" data-bg="sand"><img src="../assets/logo-blue.svg"><span class="lbl">Blue / Sand</span></div>
+    <div class="tile" data-bg="blue"><img src="../assets/logo-white.svg"><span class="lbl">White / Blue</span></div>
+    <div class="tile" data-bg="black"><img src="../assets/logo-sand.svg"><span class="lbl">Sand / Black</span></div>
+  </div>
+</div>
+</body>
+</html>

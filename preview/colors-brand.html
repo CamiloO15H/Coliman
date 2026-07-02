@@ -1,0 +1,40 @@
+<!doctype html>
+<!-- @dsCard group="Colors" name="Brand colors" subtitle="Sand · Blue · Black — the three brand colors" viewport="700x320" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Brand colors</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .sw { border: 1px solid var(--border); }
+  .chip { height: 140px; display: flex; align-items: flex-end; padding: 14px; }
+  .meta { padding: 12px 14px 14px; }
+  .name { font-family: var(--font-display); font-weight: 700; font-size: 18px; letter-spacing: -0.01em; }
+  .hex { font-family: var(--font-display); font-weight: 500; font-size: 12px; letter-spacing: 0.12em; color: var(--fg-muted); text-transform: uppercase; margin-top: 2px; }
+  .desc { font-size: 12px; line-height: 1.4; color: var(--fg-secondary); margin-top: 8px; }
+  .tag { position: absolute; top: 10px; left: 12px; font-size: 9px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
+  .chip { position: relative; }
+  .sand   { background: #d3c6b7; }
+  .blue   { background: #353f51; }
+  .black  { background: #212121; }
+  .sand .tag  { color: #353f51; }
+  .blue .tag, .black .tag { color: rgba(255,255,255,0.6); }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="grid">
+    <div class="sw"><div class="chip sand"><span class="tag">01</span></div>
+      <div class="meta"><div class="name">Sand</div><div class="hex">#d3c6b7</div><div class="desc">Materiality and connection to the environment.</div></div>
+    </div>
+    <div class="sw"><div class="chip blue"><span class="tag">02</span></div>
+      <div class="meta"><div class="name">Blue</div><div class="hex">#353f51</div><div class="desc">Stability, control, and professionalism.</div></div>
+    </div>
+    <div class="sw"><div class="chip black"><span class="tag">03</span></div>
+      <div class="meta"><div class="name">Black</div><div class="hex">#212121</div><div class="desc">Strength, character, and authority.</div></div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

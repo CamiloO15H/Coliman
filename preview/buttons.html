@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Buttons" subtitle="Primary · Secondary · Ghost · Danger · sizes" viewport="700x230" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Buttons</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .b { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: var(--fg-muted); text-transform: uppercase; margin-bottom: 10px; }
+  .row { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; margin-bottom: 18px; }
+  button, .btn {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 0;
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    transition: background 120ms ease, color 120ms ease;
+  }
+  .btn-primary { background: #353f51; color: #fff; }
+  .btn-primary:hover { background: #2c3443; }
+  .btn-secondary { background: transparent; color: #353f51; border: 1.5px solid #353f51; }
+  .btn-secondary:hover { background: #353f51; color: #fff; }
+  .btn-ghost { background: transparent; color: #353f51; padding: 10px 4px; }
+  .btn-ghost:hover { color: #11141a; }
+  .btn-danger { background: #9b3a31; color: #fff; }
+  .btn-sand { background: #d3c6b7; color: #212121; }
+  .btn-sand:hover { background: #b8aa97; }
+  .btn-sm { font-size: 11px; padding: 8px 14px; letter-spacing: 0.14em; }
+  .btn-lg { font-size: 14px; padding: 16px 28px; }
+  .btn-disabled { opacity: 0.4; pointer-events: none; }
+  .arrow { font-family: var(--font-display); }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="b">Primary · Secondary · Ghost · Danger</div>
+  <div class="row">
+    <button class="btn-primary">Request quote</button>
+    <button class="btn-secondary">Download spec</button>
+    <button class="btn-ghost">View projects →</button>
+    <button class="btn-danger">Stop work</button>
+    <button class="btn-sand">Contact PM</button>
+  </div>
+  <div class="b">Size · Disabled</div>
+  <div class="row">
+    <button class="btn-primary btn-sm">Small</button>
+    <button class="btn-primary">Default</button>
+    <button class="btn-primary btn-lg">Large</button>
+    <button class="btn-primary btn-disabled">Disabled</button>
+  </div>
+</div>
+</body>
+</html>

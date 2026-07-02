@@ -1,0 +1,43 @@
+<!doctype html>
+<!-- @dsCard group="Brand" name="Iconography" subtitle="Lucide 1.75px line icons + pictograms" viewport="700x400" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Iconography</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .b { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; color: var(--fg-muted); text-transform: uppercase; margin-bottom: 12px; }
+  .grid { display: grid; grid-template-columns: repeat(8, 1fr); gap: 8px; }
+  .icon-cell { aspect-ratio: 1; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border); color: var(--color-blue); }
+  .lucide { width: 22px; height: 22px; stroke-width: 1.75; }
+  .pictos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+  .picto { border: 1px solid var(--color-blue); aspect-ratio: 1.6 / 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px; padding: 16px; }
+  .picto .lucide { width: 32px; height: 32px; stroke-width: 1.5; color: var(--color-blue); }
+  .picto-label { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--color-blue); }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="b">UI icons · Lucide · 1.75px stroke · currentColor</div>
+  <div class="grid" id="icons"></div>
+  <div class="pictos">
+    <div class="picto"><i data-lucide="square-stack" class="lucide"></i><span class="picto-label">Framing</span></div>
+    <div class="picto"><i data-lucide="grid-3x3" class="lucide"></i><span class="picto-label">Ceilings</span></div>
+    <div class="picto"><i data-lucide="hard-hat" class="lucide"></i><span class="picto-label">Safety</span></div>
+    <div class="picto"><i data-lucide="ruler" class="lucide"></i><span class="picto-label">Specs</span></div>
+  </div>
+</div>
+<script src="https://unpkg.com/lucide@0.469.0/dist/umd/lucide.min.js"></script>
+<script>
+  const names = ["building-2","layers","hammer","wrench","clipboard-check","ruler","hard-hat","triangle-alert","file-text","calendar","map-pin","mail","phone","arrow-right","check","chevron-right"];
+  const grid = document.getElementById("icons");
+  names.forEach(n => {
+    const cell = document.createElement("div");
+    cell.className = "icon-cell";
+    cell.innerHTML = `<i data-lucide="${n}" class="lucide"></i>`;
+    grid.appendChild(cell);
+  });
+  lucide.createIcons();
+</script>
+</body>
+</html>

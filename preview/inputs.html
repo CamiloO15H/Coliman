@@ -1,0 +1,63 @@
+<!doctype html>
+<!-- @dsCard group="Components" name="Form inputs" subtitle="Text, select, error, checkboxes" viewport="700x320" -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Form inputs</title>
+<link rel="stylesheet" href="_card.css">
+<style>
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px 20px; }
+  .field { display: flex; flex-direction: column; gap: 6px; }
+  .label { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: var(--color-blue); }
+  .hint  { font-family: var(--font-body); font-size: 11px; color: var(--fg-muted); }
+  input[type="text"], select, textarea {
+    font-family: var(--font-body);
+    font-size: 14px;
+    padding: 12px 14px;
+    background: #fff;
+    border: 1px solid var(--neutral-300);
+    border-radius: 0;
+    color: var(--color-black);
+    outline: none;
+    transition: border 120ms ease, box-shadow 120ms ease;
+  }
+  input[type="text"]:focus, select:focus, textarea:focus {
+    border-color: var(--color-blue);
+    box-shadow: inset 0 0 0 1px var(--color-blue);
+  }
+  .field.error input { border-color: #9b3a31; box-shadow: inset 0 0 0 1px #9b3a31; }
+  .field.error .hint { color: #9b3a31; }
+  .check { display: flex; align-items: center; gap: 10px; font-family: var(--font-body); font-size: 14px; }
+  .check input { width: 16px; height: 16px; accent-color: var(--color-blue); }
+  select { appearance: none; background-image: linear-gradient(45deg, transparent 50%, var(--color-blue) 50%), linear-gradient(135deg, var(--color-blue) 50%, transparent 50%); background-position: calc(100% - 18px) 50%, calc(100% - 13px) 50%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; padding-right: 36px; }
+</style>
+</head>
+<body>
+<div class="card-stage">
+  <div class="grid">
+    <div class="field">
+      <label class="label">Project name</label>
+      <input type="text" value="Northgate Medical, Phase II">
+    </div>
+    <div class="field">
+      <label class="label">Scope</label>
+      <select><option>Metal framing + drywall</option><option>Acoustic ceilings</option><option>All scopes</option></select>
+    </div>
+    <div class="field">
+      <label class="label">Square footage</label>
+      <input type="text" placeholder="e.g. 18,000">
+      <span class="hint">Enter net floor area.</span>
+    </div>
+    <div class="field error">
+      <label class="label">Bid due</label>
+      <input type="text" value="">
+      <span class="hint">Date required.</span>
+    </div>
+    <div class="field" style="grid-column: 1 / -1;">
+      <label class="check"><input type="checkbox" checked> Include OSHA 30 supervision on every crew</label>
+      <label class="check"><input type="checkbox"> Provide phased schedule aligned to GC milestones</label>
+    </div>
+  </div>
+</div>
+</body>
+</html>
