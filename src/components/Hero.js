@@ -7,7 +7,9 @@ import { heroVideoPlaceholder } from '../placeholders/placeholders.js';
 export function initHero() {
   const heroMedia = document.querySelector("#hero-media");
   if (heroMedia) {
-    heroMedia.innerHTML = heroVideoPlaceholder();
+    heroMedia.innerHTML = `
+      <video autoplay muted loop playsinline src="./assets/Video.mp4" style="width: 100%; height: 100%; object-fit: cover; display: block;"></video>
+    `;
   }
 
   // Ejecutar animación de contador de estadísticas
