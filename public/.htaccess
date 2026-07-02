@@ -32,9 +32,10 @@
   ExpiresActive On
   ExpiresDefault "access plus 1 month"
   
-  # Cachear imágenes y tipografías por 1 año
+  # Cachear imágenes, tipografías y videos por 1 año
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType font/ttf "access plus 1 year"
+  ExpiresByType video/mp4 "access plus 1 year"
   
   # Cachear CSS y JS por 1 año (Vite se encarga de cambiar el hash si los editas)
   ExpiresByType text/css "access plus 1 year"
