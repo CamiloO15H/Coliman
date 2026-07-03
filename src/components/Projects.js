@@ -75,7 +75,7 @@ export function initProjects() {
   projectsGrid.innerHTML = PROJECTS.map((p, i) => `
     <button class="project" data-idx="${i}" aria-label="View ${p.title}">
       <div class="img">
-        <img src="./Images/Project ${i + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        <img src="./Images/Project ${i + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" decoding="async" />
       </div>
       <div class="meta">
         <h4>${p.title}</h4>
@@ -158,11 +158,37 @@ function openModal(idx) {
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+
+  // Focus trap: keep Tab/Shift+Tab inside the modal for accessibility
+  const focusable = modal.querySelectorAll(
+    'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+  );
+  const first = focusable[0];
+  const last  = focusable[focusable.length - 1];
+
+  // Set initial focus on the close button
+  if (first) first.focus();
+
+  function trapFocus(e) {
+    if (e.key !== 'Tab') return;
+    if (e.shiftKey) {
+      if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+    } else {
+      if (document.activeElement === last)  { e.preventDefault(); first.focus(); }
+    }
+  }
+  modal._trapFocus = trapFocus;
+  modal.addEventListener('keydown', trapFocus);
 }
 
 function closeModal() {
   const modal = document.querySelector("#project-modal");
   if (!modal) return;
+  // Remove focus trap listener before closing
+  if (modal._trapFocus) {
+    modal.removeEventListener('keydown', modal._trapFocus);
+    modal._trapFocus = null;
+  }
   modal.classList.remove('is-open');
   modal.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';

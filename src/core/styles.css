@@ -1020,10 +1020,12 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(-50%);
   opacity: 0;
 }
-.client-logo:hover .logo-default {
+.client-logo:hover .logo-default,
+.client-logo.is-active .logo-default {
   opacity: 0;
 }
-.client-logo:hover .logo-hover {
+.client-logo:hover .logo-hover,
+.client-logo.is-active .logo-hover {
   opacity: 1;
 }
 

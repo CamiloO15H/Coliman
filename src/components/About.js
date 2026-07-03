@@ -15,13 +15,13 @@ export function initAbout() {
   // 1. Render de imagen de historia principal
   const aboutMedia = document.querySelector("#about-media");
   if (aboutMedia) {
-    aboutMedia.innerHTML = `<img src="./Images/Story Photo.webp" alt="Our Story" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
+    aboutMedia.innerHTML = `<img src="./Images/Story Photo.webp" alt="Our Story" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="eager" decoding="async" />`;
   }
 
   // 2. Render de imagen del equipo completo
   const teamGroupMedia = document.querySelector("#team-group-media");
   if (teamGroupMedia) {
-    teamGroupMedia.innerHTML = `<img src="./Images/Team 5.webp" alt="Group Photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
+    teamGroupMedia.innerHTML = `<img src="./Images/Team 5.webp" alt="Group Photo — The full Coliman crew" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" decoding="async" />`;
   }
 
   // 3. Render dinámico de tarjetas del equipo
@@ -30,7 +30,7 @@ export function initAbout() {
     teamGrid.innerHTML = TEAM.map((m, i) => `
       <article class="team-card">
         <div class="ph">
-          <img src="./Images/Team ${i + 1}.webp" alt="${m.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+          <img src="./Images/Team ${i + 1}.webp" alt="${m.name}, ${m.role}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" decoding="async" />
         </div>
         <div class="info">
           <span class="num">${m.num} / ${String(TEAM.length).padStart(2, '0')}</span>

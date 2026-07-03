@@ -18,9 +18,20 @@ export function initClients() {
   const list = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
   track.innerHTML = list.map(logo => `
-    <div class="client-logo" aria-label="${logo.name}">
+    <div class="client-logo" aria-label="${logo.name}" role="img">
       <img class="logo-default" src="./Clients/Logo ${logo.id} Sand.svg" alt="${logo.name}" />
-      <img class="logo-hover" src="./Clients/Logo ${logo.id} Blue.svg" alt="${logo.name} Hover" />
+      <img class="logo-hover" src="./Clients/Logo ${logo.id} Blue.svg" alt="${logo.name}" aria-hidden="true" />
     </div>
   `).join('');
+
+  // Touch/click toggle: activates the Blue version on tap (since :hover doesn't work on touch)
+  track.addEventListener('click', (e) => {
+    const logo = e.target.closest('.client-logo');
+    if (!logo) return;
+    // Deactivate all others, toggle the clicked one
+    track.querySelectorAll('.client-logo').forEach(l => {
+      if (l !== logo) l.classList.remove('is-active');
+    });
+    logo.classList.toggle('is-active');
+  });
 }
