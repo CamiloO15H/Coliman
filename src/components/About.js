@@ -15,13 +15,13 @@ export function initAbout() {
   // 1. Render de imagen de historia principal
   const aboutMedia = document.querySelector("#about-media");
   if (aboutMedia) {
-    aboutMedia.innerHTML = stripedPlaceholder("OUR STORY", { sub: "TEAM / SITE PHOTO" });
+    aboutMedia.innerHTML = `<img src="./Images/Story Photo.webp" alt="Our Story" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
   }
 
   // 2. Render de imagen del equipo completo
   const teamGroupMedia = document.querySelector("#team-group-media");
   if (teamGroupMedia) {
-    teamGroupMedia.innerHTML = stripedPlaceholder("GROUP PHOTO", { sub: "FULL TEAM — PANORAMIC" });
+    teamGroupMedia.innerHTML = `<img src="./Images/Team 5.webp" alt="Group Photo" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
   }
 
   // 3. Render dinámico de tarjetas del equipo
@@ -29,7 +29,9 @@ export function initAbout() {
   if (teamGrid) {
     teamGrid.innerHTML = TEAM.map((m, i) => `
       <article class="team-card">
-        <div class="ph">${teamPlaceholder(m.initials, i)}</div>
+        <div class="ph">
+          <img src="./Images/Team ${i + 1}.webp" alt="${m.name}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+        </div>
         <div class="info">
           <span class="num">${m.num} / ${String(TEAM.length).padStart(2, '0')}</span>
           <span class="name">${m.name}</span>

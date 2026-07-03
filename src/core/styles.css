@@ -3,10 +3,7 @@
    Editorial-Industrial Corporate Landing
    =========================================================== */
 
-/* Brand type families — @font-face declarations sourced from Google Fonts.
-   Keep families as Archivo / Inter / JetBrains Mono; swap to uploaded
-   local font files here if/when they are provided. */
-@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+/* Brand type families loaded via <link> in index.html — see Archivo, Inter, JetBrains Mono */
 
 :root {
   --c-sand: #d3c6b7;
@@ -128,7 +125,7 @@ a { color: inherit; text-decoration: none; }
   color: #fff;
   mix-blend-mode: normal;
 }
-.nav.is-scrolled {
+.nav.is-scrolled:not(.menu-open) {
   background: rgba(246, 243, 238, 0.92);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
@@ -148,6 +145,15 @@ a { color: inherit; text-decoration: none; }
   -webkit-mask: url("./assets/coliman-wordmark.svg") left center / contain no-repeat;
           mask: url("./assets/coliman-wordmark.svg") left center / contain no-repeat;
   transition: background-color var(--t-med);
+}
+.nav.is-scrolled:not(.menu-open) .brand-mark {
+  background-color: var(--c-blue);
+}
+.nav.menu-open {
+  color: #fff !important;
+}
+.nav.menu-open .brand-mark {
+  background-color: #fff !important;
 }
 @media (max-width: 560px) {
   .nav .brand-mark { width: 132px; height: 26px; }
@@ -298,8 +304,7 @@ a { color: inherit; text-decoration: none; }
   position: absolute;
   top: -1px; bottom: -1px; left: -1px; right: -1px;
   z-index: -1;
-  background:
-    linear-gradient(180deg, rgba(53, 63, 81, 0.45) 0%, rgba(53, 63, 81, 0.30) 50%, rgba(53, 63, 81, 0.65) 100%); /* Bluer, lower opacity for a natural yet branded look */
+  background: rgba(55, 67, 84, 0.88); /* Mathematically matched steel-blue overlay tint from the user's reference image */
 }
 .hero__inner {
   position: relative;
@@ -785,8 +790,8 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   border: 1px solid var(--c-line);
 }
-.project .img svg { width: 100%; height: 100%; transition: transform var(--t-med); }
-.project:hover .img svg { transform: scale(1.03); }
+.project .img svg, .project .img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform var(--t-med); }
+.project:hover .img svg, .project:hover .img img { transform: scale(1.03); }
 .project .img::after {
   content: "VIEW DETAILS";
   position: absolute;
@@ -882,7 +887,7 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   overflow: hidden;
 }
-.modal__hero svg { width: 100%; height: 100%; }
+.modal__hero svg, .modal__hero img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .modal__thumbs {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -901,7 +906,7 @@ a { color: inherit; text-decoration: none; }
   transition: opacity var(--t-fast);
 }
 .modal__thumbs button.active, .modal__thumbs button:hover { opacity: 1; }
-.modal__thumbs button svg { width: 100%; height: 100%; }
+.modal__thumbs button svg, .modal__thumbs button img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .modal__body {
   padding: clamp(28px, 3vw, 48px);
   display: flex;
@@ -995,15 +1000,32 @@ a { color: inherit; text-decoration: none; }
   to   { transform: translateX(-50%); }
 }
 .client-logo {
+  position: relative;
   height: 48px;
   display: flex;
   align-items: center;
-  filter: grayscale(1) opacity(0.55);
-  transition: filter var(--t-med);
   flex-shrink: 0;
+  cursor: pointer;
 }
-.client-logo:hover { filter: grayscale(0) opacity(1); }
-.client-logo svg { height: 48px; width: auto; }
+.client-logo img {
+  height: 38px; /* Proportioned height to match user UX layout */
+  width: auto;
+  display: block;
+  transition: opacity var(--t-med);
+}
+.client-logo .logo-hover {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+}
+.client-logo:hover .logo-default {
+  opacity: 0;
+}
+.client-logo:hover .logo-hover {
+  opacity: 1;
+}
 
 /* ---------- Contact ---------- */
 .contact {

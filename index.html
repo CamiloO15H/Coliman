@@ -12,15 +12,16 @@
 
 <!-- Open Graph / Social Media Sharing Preview Meta Tags (WhatsApp, LinkedIn, FB) -->
 <meta property="og:type" content="website" />
+<meta property="og:url" content="https://coliman.build/" />
 <meta property="og:title" content="Coliman Construction Service — Metal Framing & Acoustic Ceilings" />
 <meta property="og:description" content="Coliman Construction Service builds metal framing and acoustic ceiling systems for commercial and institutional projects across the US." />
-<meta property="og:image" content="/src/core/assets/logo-stacked.svg" />
+<meta property="og:image" content="https://coliman.build/Images/Story Photo.webp" />
 
 <!-- Twitter -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Coliman Construction Service" />
 <meta name="twitter:description" content="Metal Framing & Acoustic Ceilings for commercial and institutional projects." />
-<meta name="twitter:image" content="/src/core/assets/logo-stacked.svg" />
+<meta name="twitter:image" content="https://coliman.build/Images/Story Photo.webp" />
 
 <!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -318,7 +319,8 @@
 </div>
 
 <!-- ============ TWEAKS PANEL ============ -->
-<div class="tw" id="tweaks" role="dialog" aria-label="Tweaks"></div>
+<!-- Design-time tool — hidden in production; activated via postMessage from parent frame -->
+<div class="tw" id="tweaks" role="dialog" aria-label="Tweaks" aria-hidden="true"></div>
 
 <!-- Vite JS Scripts -->
 <script type="module" src="/src/main.js"></script>

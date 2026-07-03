@@ -6,64 +6,64 @@ import { projectImg, projectGalleryImg } from '../placeholders/placeholders.js';
 
 const PROJECTS = [
   {
-    title: "Metro Courthouse, Civic Phase II",
-    type: "Judicial · 184,000 SF",
-    loc: "ATLANTA, GA",
-    where: "ATLANTA, GA · 2024",
-    summary: "Cold-formed metal framing and Level-5 finish across courtrooms, secure corridors, and judicial chambers — integrated under blast and acoustic specifications.",
+    title: "Tampa International Airport",
+    type: "Aviation · 380,000 SF",
+    loc: "TAMPA, FL",
+    where: "TAMPA, FL · 20XX",
+    summary: "Concourse-wide custom linear metal ceiling system, acoustic baffles, and heavy-gauge structural steel framing for the new airport terminal expansion.",
     scope: [
-      "26,000 LF of 18ga structural studs",
-      "Level 5 finish across 92,000 SF",
-      "Acoustic-rated chamber assemblies",
-      "Coordinated with 5 prime trades on a 14-month schedule",
+      "12,400 LF of custom linear ceiling framing",
+      "Drywall installations for 64 boarding gates",
+      "BIM coordination with HVAC and baggage systems",
+      "Phased terminal turnover under live flight operations",
     ],
-    client: "Sutter & Park GC",
-    duration: "14 months",
-  },
-  {
-    title: "St. Agnes Regional Hospital",
-    type: "Healthcare · 240,000 SF",
-    loc: "RALEIGH, NC",
-    where: "RALEIGH, NC · 2023",
-    summary: "Phased ceiling and partition build-out across active patient wings — clean-room compliant assemblies and acoustically isolated imaging suites.",
-    scope: [
-      "Negative-pressure room assemblies",
-      "Lead-lined imaging suite framing",
-      "Acoustic tegular ceilings, 88,000 SF",
-      "Night-shift sequencing in occupied wings",
-    ],
-    client: "Bauer Construction",
-    duration: "22 months",
-  },
-  {
-    title: "Midland Intl. Terminal B",
-    type: "Aviation · 410,000 SF",
-    loc: "DALLAS, TX",
-    where: "DALLAS, TX · 2023",
-    summary: "Concourse-wide custom linear wood-look ceiling system and steel framing for retail bays — fabricated and installed under live-airport conditions.",
-    scope: [
-      "12,400 LF custom linear ceiling",
-      "Retail bay framing, 64 units",
-      "BIM coordination with MEP/structural",
-      "Phased turnover across 4 zones",
-    ],
-    client: "Crestline Aviation Builders",
+    client: "Tampa Airport Authority / Turner GC",
     duration: "18 months",
   },
   {
-    title: "Northfield University, Science Hall",
-    type: "Higher Education · 96,000 SF",
-    loc: "COLUMBUS, OH",
-    where: "COLUMBUS, OH · 2022",
-    summary: "Lab-rated assemblies and acoustic ceiling systems for teaching labs, lecture halls, and faculty office floors — coordinated with fume-hood and AV trades.",
+    title: "Saint Petersburg Courthouse",
+    type: "Judicial · 145,000 SF",
+    loc: "ST. PETERSBURG, FL",
+    where: "ST. PETERSBURG, FL · 20XX",
+    summary: "Complete load-bearing metal framing and high-performance acoustic ceiling systems for courtrooms, secure detention corridors, and judicial chambers.",
     scope: [
-      "Chemistry lab demising walls",
-      "Lecture hall acoustic ceilings, NRC 0.85",
-      "Faculty office finish package",
-      "Punch & turnover under 6-week window",
+      "26,000 LF of 18ga structural steel studs",
+      "Level 5 high-end drywall finish across 92,000 SF",
+      "Acoustic-rated courtroom chamber assemblies",
+      "Coordinated with city safety and blast-resistant specs",
     ],
-    client: "Halcyon GC",
-    duration: "11 months",
+    client: "City of St. Petersburg / Skanska",
+    duration: "14 months",
+  },
+  {
+    title: "Pasco County High School",
+    type: "Educational · 210,000 SF",
+    loc: "DADE CITY, FL",
+    where: "DADE CITY, FL · 20XX",
+    summary: "Metal framing, sound isolation, and high-impact drywall finishes across classrooms, common areas, auditorium, and athletic facilities.",
+    scope: [
+      "Heavy-duty classroom demising walls",
+      "Acoustic ceilings and wall panels for school auditorium",
+      "High-impact drywall boards in corridors and gymnasiums",
+      "Fast-track summer delivery ahead of the school year",
+    ],
+    client: "Pasco County School Board",
+    duration: "12 months",
+  },
+  {
+    title: "Women’s Center",
+    type: "Healthcare · 75,000 SF",
+    loc: "APOPKA, FL",
+    where: "APOPKA, FL · 20XX",
+    summary: "Clean-room drywall partitioning, specialty infection-control ceilings, and lead-shielded imaging suite framing for new maternity and diagnostic wings.",
+    scope: [
+      "Specialty clean-room ceilings and partition systems",
+      "Lead-lined drywall framing for mammography suites",
+      "Sound transmission class (STC) 55 exam room walls",
+      "Night-shift construction sequence inside active campus",
+    ],
+    client: "Apopka Medical Partners / Gilbane",
+    duration: "10 months",
   },
 ];
 
@@ -74,7 +74,9 @@ export function initProjects() {
   // 1. Renderizar tarjetas de proyectos
   projectsGrid.innerHTML = PROJECTS.map((p, i) => `
     <button class="project" data-idx="${i}" aria-label="View ${p.title}">
-      <div class="img">${projectImg(i)}</div>
+      <div class="img">
+        <img src="./Images/Project ${i + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />
+      </div>
       <div class="meta">
         <h4>${p.title}</h4>
         <span class="where">${p.where}</span>
@@ -127,25 +129,31 @@ function openModal(idx) {
   modal.querySelector("#mp-scope").innerHTML = p.scope.map(s => `<li>${s}</li>`).join('');
 
   const heroContainer = modal.querySelector("#mp-hero");
-  heroContainer.innerHTML = projectImg(idx);
+  heroContainer.innerHTML = `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
 
   const thumbs = modal.querySelector("#mp-thumbs");
-  thumbs.innerHTML = Array.from({ length: 4 }, (_, gi) => `
-    <button data-gi="${gi}" class="${gi === 0 ? 'active' : ''}">
-      ${projectGalleryImg(idx, gi)}
-    </button>
-  `).join('');
+  if (thumbs) {
+    thumbs.style.display = ''; // Restore thumbnails visibility
+    thumbs.innerHTML = Array.from({ length: 4 }, (_, gi) => `
+      <button data-gi="${gi}" class="${gi === 0 ? 'active' : ''}">
+        ${gi === 0
+          ? `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title} thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`
+          : projectGalleryImg(idx, gi)
+        }
+      </button>
+    `).join('');
 
-  thumbs.querySelectorAll('button').forEach(b => {
-    b.addEventListener('click', () => {
-      const gi = parseInt(b.dataset.gi, 10);
-      thumbs.querySelectorAll('button').forEach(x => x.classList.remove('active'));
-      b.classList.add('active');
-      heroContainer.innerHTML = gi === 0
-        ? projectImg(idx)
-        : projectGalleryImg(idx, gi);
+    thumbs.querySelectorAll('button').forEach(b => {
+      b.addEventListener('click', () => {
+        const gi = parseInt(b.dataset.gi, 10);
+        thumbs.querySelectorAll('button').forEach(x => x.classList.remove('active'));
+        b.classList.add('active');
+        heroContainer.innerHTML = gi === 0
+          ? `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`
+          : projectGalleryImg(idx, gi);
+      });
     });
-  });
+  }
 
   modal.classList.add('is-open');
   modal.setAttribute('aria-hidden', 'false');
