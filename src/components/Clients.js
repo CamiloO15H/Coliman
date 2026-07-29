@@ -6,11 +6,11 @@ export function initClients() {
   const track = document.querySelector("#clients-track");
   if (!track) return;
 
-  // Los 4 logotipos oficiales de clientes provistos por el usuario
+  // Los logotipos oficiales de clientes — actualizado per feedback del cliente
   const CLIENT_LOGOS = [
     { id: 1, name: "Kenpat" },
     { id: 2, name: "Acousti" },
-    { id: 3, name: "Uniclad" },
+    { id: 3, name: "LA Construction USA" },
     { id: 4, name: "SJS Drywall" }
   ];
 

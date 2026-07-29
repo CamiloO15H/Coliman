@@ -173,10 +173,12 @@ export function serviceBg(idx) {
 export function projectImg(idx) {
   const accents = ["#353f51", "#7a6b58", "#4a576e", "#5c5040"];
   const labels = [
-    ["METRO COURTHOUSE", "ATLANTA, GA"],
-    ["ST. AGNES HOSPITAL", "RALEIGH, NC"],
-    ["MIDLAND TERMINAL B", "DALLAS, TX"],
-    ["NORTHFIELD UNIV. SCI. HALL", "COLUMBUS, OH"],
+    ["PASCO COUNTY JAIL", "LAND O' LAKES, FL"],
+    ["MOFFITT CANCER CENTER", "TAMPA, FL"],
+    ["DRURY PLAZA HOTEL", "BRANDON, FL"],
+    ["TAMPA INTL AIRPORT", "TAMPA, FL"],
+    ["ST. PETERSBURG COURTHOUSE", "ST. PETERSBURG, FL"],
+    ["PASCO COUNTY HIGH SCHOOL", "DADE CITY, FL"],
   ];
   const a = accents[idx];
   const [l, sub] = labels[idx];

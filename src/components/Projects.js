@@ -6,10 +6,55 @@ import { projectImg, projectGalleryImg } from '../placeholders/placeholders.js';
 
 const PROJECTS = [
   {
+    title: "Pasco County Jail Project",
+    type: "Correctional · Institutional",
+    loc: "LAND O' LAKES, FL",
+    where: "LAND O' LAKES, FL · Pasco County",
+    summary: "Complete installation of structural metal framing, drywall hanging, concrete masonry, and high-durability wall finishing for the Pasco County Jail facility expansion.",
+    scope: [
+      "Complete installation of structural metal framing",
+      "Drywall hanging and high-durability finishing",
+      "Hardened security wall & partition assemblies",
+      "Concrete masonry, framing & painting scope",
+    ],
+    client: "Pasco County / GC TBD",
+    duration: "18 months",
+  },
+  {
+    title: "Moffitt Cancer Research Center",
+    type: "Healthcare · 240,000 SF",
+    loc: "TAMPA, FL",
+    where: "TAMPA, FL",
+    summary: "High-end interior finishes, specialized moisture-resistant drywall systems, and acoustical ceilings across three floors of laboratory and medical research space.",
+    scope: [
+      "High-end interior finishes package",
+      "Specialized moisture-resistant drywall systems",
+      "Acoustical ceilings across 3 laboratory floors",
+      "Cleanroom framing and isolation assemblies",
+    ],
+    client: "Barr & Barr / Skanska",
+    duration: "24 months",
+  },
+  {
+    title: "Drury Plaza Hotel in Brandon",
+    type: "Hospitality · 180 Guestrooms",
+    loc: "BRANDON, FL",
+    where: "BRANDON, FL",
+    summary: "Full layout, metal stud framing, and drywall delivery for all 180 guestrooms and common lobby areas, plus exterior insulation finish systems (EIFS).",
+    scope: [
+      "Full layout and metal stud framing delivery",
+      "Drywall installation for 180 guestrooms",
+      "Common lobby areas framing & finishing",
+      "Exterior insulation finish systems (EIFS)",
+    ],
+    client: "Drury Development Corporation",
+    duration: "12 months",
+  },
+  {
     title: "Tampa International Airport",
     type: "Aviation · 380,000 SF",
     loc: "TAMPA, FL",
-    where: "TAMPA, FL · 20XX",
+    where: "TAMPA, FL",
     summary: "Concourse-wide custom linear metal ceiling system, acoustic baffles, and heavy-gauge structural steel framing for the new airport terminal expansion.",
     scope: [
       "12,400 LF of custom linear ceiling framing",
@@ -24,7 +69,7 @@ const PROJECTS = [
     title: "Saint Petersburg Courthouse",
     type: "Judicial · 145,000 SF",
     loc: "ST. PETERSBURG, FL",
-    where: "ST. PETERSBURG, FL · 20XX",
+    where: "ST. PETERSBURG, FL",
     summary: "Complete load-bearing metal framing and high-performance acoustic ceiling systems for courtrooms, secure detention corridors, and judicial chambers.",
     scope: [
       "26,000 LF of 18ga structural steel studs",
@@ -39,7 +84,7 @@ const PROJECTS = [
     title: "Pasco County High School",
     type: "Educational · 210,000 SF",
     loc: "DADE CITY, FL",
-    where: "DADE CITY, FL · 20XX",
+    where: "DADE CITY, FL",
     summary: "Metal framing, sound isolation, and high-impact drywall finishes across classrooms, common areas, auditorium, and athletic facilities.",
     scope: [
       "Heavy-duty classroom demising walls",
@@ -49,21 +94,6 @@ const PROJECTS = [
     ],
     client: "Pasco County School Board",
     duration: "12 months",
-  },
-  {
-    title: "Women’s Center",
-    type: "Healthcare · 75,000 SF",
-    loc: "APOPKA, FL",
-    where: "APOPKA, FL · 20XX",
-    summary: "Clean-room drywall partitioning, specialty infection-control ceilings, and lead-shielded imaging suite framing for new maternity and diagnostic wings.",
-    scope: [
-      "Specialty clean-room ceilings and partition systems",
-      "Lead-lined drywall framing for mammography suites",
-      "Sound transmission class (STC) 55 exam room walls",
-      "Night-shift construction sequence inside active campus",
-    ],
-    client: "Apopka Medical Partners / Gilbane",
-    duration: "10 months",
   },
 ];
 
@@ -75,7 +105,7 @@ export function initProjects() {
   projectsGrid.innerHTML = PROJECTS.map((p, i) => `
     <button class="project" data-idx="${i}" aria-label="View ${p.title}">
       <div class="img">
-        <img src="./Images/Project ${i + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" decoding="async" />
+        <img src="./Images/Project ${i + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,${encodeURIComponent(projectImg(i))}';" />
       </div>
       <div class="meta">
         <h4>${p.title}</h4>
@@ -129,7 +159,7 @@ function openModal(idx) {
   modal.querySelector("#mp-scope").innerHTML = p.scope.map(s => `<li>${s}</li>`).join('');
 
   const heroContainer = modal.querySelector("#mp-hero");
-  heroContainer.innerHTML = `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`;
+  heroContainer.innerHTML = `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,${encodeURIComponent(projectImg(idx))}';" />`;
 
   const thumbs = modal.querySelector("#mp-thumbs");
   if (thumbs) {
@@ -137,7 +167,7 @@ function openModal(idx) {
     thumbs.innerHTML = Array.from({ length: 4 }, (_, gi) => `
       <button data-gi="${gi}" class="${gi === 0 ? 'active' : ''}">
         ${gi === 0
-          ? `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title} thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`
+          ? `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title} thumbnail" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,${encodeURIComponent(projectImg(idx))}';" />`
           : projectGalleryImg(idx, gi)
         }
       </button>
@@ -149,7 +179,7 @@ function openModal(idx) {
         thumbs.querySelectorAll('button').forEach(x => x.classList.remove('active'));
         b.classList.add('active');
         heroContainer.innerHTML = gi === 0
-          ? `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" />`
+          ? `<img src="./Images/Project ${idx + 1}.webp" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null; this.src='data:image/svg+xml;charset=utf-8,${encodeURIComponent(projectImg(idx))}';" />`
           : projectGalleryImg(idx, gi);
       });
     });

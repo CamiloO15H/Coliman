@@ -235,35 +235,42 @@ a { color: inherit; text-decoration: none; }
     text-align: center;
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
-    background: linear-gradient(180deg, rgba(53, 63, 81, 0.98) 0%, rgba(53, 63, 81, 0.94) 50%, rgba(13, 13, 13, 0.98) 100%); /* Premium brand-blue navy to matte-black gradient */
+    width: 100vw; height: 100vh; height: 100dvh;
+    background: linear-gradient(180deg, rgba(33, 33, 33, 0.98) 0%, rgba(53, 63, 81, 0.96) 50%, rgba(33, 33, 33, 0.98) 100%);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
-    z-index: 40;
+    z-index: 9999;
     padding: 80px var(--gutter) 48px;
-    gap: 36px;
+    gap: 32px;
   }
   .nav-links.is-open {
-    display: flex;
-    animation: fadeIn 300ms var(--ease-standard);
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    animation: fadeIn 250ms var(--ease-standard);
   }
   .nav-links a {
     font-size: 32px;
-    font-family: var(--font-display);
+    font-family: var(--ff-display);
     font-weight: var(--w-semibold);
     text-transform: uppercase;
-    color: #fff;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: slideUpFade 400ms var(--ease-standard) forwards;
+    color: #fff !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none;
+    transition: color var(--t-fast);
   }
-  .nav-links a:nth-child(1) { animation-delay: 80ms; }
-  .nav-links a:nth-child(2) { animation-delay: 130ms; }
-  .nav-links a:nth-child(3) { animation-delay: 180ms; }
-  .nav-links a:nth-child(4) { animation-delay: 230ms; }
-  .nav-links a:nth-child(5) { animation-delay: 280ms; }
+  .nav-links.is-open a {
+    animation: slideUpFade 350ms var(--ease-standard) forwards;
+  }
+  .nav-links a:nth-child(1) { animation-delay: 40ms; }
+  .nav-links a:nth-child(2) { animation-delay: 80ms; }
+  .nav-links a:nth-child(3) { animation-delay: 120ms; }
+  .nav-links a:nth-child(4) { animation-delay: 160ms; }
+  .nav-links a:nth-child(5) { animation-delay: 200ms; }
 
   .nav .cta { display: none; }
-  .nav .menu-btn { display: block; }
+  .nav .menu-btn { display: block; z-index: 10000; position: relative; }
 }
 
 @keyframes fadeIn {
@@ -780,10 +787,10 @@ a { color: inherit; text-decoration: none; }
   background: none;
   padding: 0;
 }
-.project:nth-child(1) { grid-column: span 7; }
-.project:nth-child(2) { grid-column: span 5; }
-.project:nth-child(3) { grid-column: span 5; }
-.project:nth-child(4) { grid-column: span 7; }
+.project:nth-child(4n + 1) { grid-column: span 7; }
+.project:nth-child(4n + 2) { grid-column: span 5; }
+.project:nth-child(4n + 3) { grid-column: span 5; }
+.project:nth-child(4n + 0) { grid-column: span 7; }
 .project .img {
   aspect-ratio: 16/10;
   background: var(--c-sand-50);
