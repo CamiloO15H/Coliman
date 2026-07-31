@@ -995,18 +995,36 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
+  /* Previene fallos de renderizado de máscara en Safari */
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .clients__track {
   display: flex;
   gap: 70px;
+  -webkit-animation: scroll 40s linear infinite;
   animation: scroll 40s linear infinite;
   width: max-content;
   align-items: center;
+  /* Aceleración por hardware y fixes para WebKit/Safari */
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  will-change: transform;
 }
-.clients__track:hover { animation-play-state: paused; }
+@media (hover: hover) {
+  .clients__track:hover {
+    animation-play-state: paused;
+  }
+}
+@-webkit-keyframes scroll {
+  0% { -webkit-transform: translate3d(0, 0, 0); }
+  100% { -webkit-transform: translate3d(-50%, 0, 0); }
+}
 @keyframes scroll {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
 }
 .client-logo {
   position: relative;
