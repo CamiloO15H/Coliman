@@ -10,7 +10,7 @@ export function initReveal() {
     '.section-head .meta', '.section-head > div:last-child',
     '.about__media', '.about__col',
     '.team-head', '.team-group',
-    '.clients__top', '.clients__track-wrap',
+    '.clients__top',
     '.contact__map', '.contact__body',
   ];
   

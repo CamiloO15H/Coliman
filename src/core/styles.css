@@ -993,38 +993,57 @@ a { color: inherit; text-decoration: none; }
 }
 .clients__track-wrap {
   position: relative;
-  mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 8%, #000 92%, transparent 100%);
-  /* Previene fallos de renderizado de máscara en Safari */
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
+  overflow: hidden;
+  width: 100%;
+  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
 }
 .clients__track {
   display: flex;
-  gap: 70px;
-  -webkit-animation: scroll 40s linear infinite;
-  animation: scroll 40s linear infinite;
   width: max-content;
   align-items: center;
-  /* Aceleración por hardware y fixes para WebKit/Safari */
+  -webkit-animation: scroll 40s linear infinite;
+  animation: scroll 40s linear infinite;
+  will-change: transform;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  perspective: 1000;
-  will-change: transform;
+  -webkit-perspective: 1000px;
+  perspective: 1000px;
 }
-@media (hover: hover) {
+.clients__group {
+  display: flex;
+  align-items: center;
+  gap: 70px;
+  padding-right: 70px;
+  flex-shrink: 0;
+}
+@media (hover: hover) and (pointer: fine) {
   .clients__track:hover {
+    -webkit-animation-play-state: paused;
     animation-play-state: paused;
   }
 }
 @-webkit-keyframes scroll {
-  0% { -webkit-transform: translate3d(0, 0, 0); }
-  100% { -webkit-transform: translate3d(-50%, 0, 0); }
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 @keyframes scroll {
-  0% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(-50%, 0, 0); }
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    -webkit-transform: translate3d(-50%, 0, 0);
+    transform: translate3d(-50%, 0, 0);
+  }
 }
 .client-logo {
   position: relative;
