@@ -997,20 +997,13 @@ a { color: inherit; text-decoration: none; }
   width: 100%;
   mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
   -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
 }
 .clients__track {
   display: flex;
   width: max-content;
   align-items: center;
-  -webkit-animation: scroll 40s linear infinite;
   animation: scroll 40s linear infinite;
   will-change: transform;
-  -webkit-backface-visibility: hidden;
-  backface-visibility: hidden;
-  -webkit-perspective: 1000px;
-  perspective: 1000px;
 }
 .clients__group {
   display: flex;
@@ -1021,28 +1014,15 @@ a { color: inherit; text-decoration: none; }
 }
 @media (hover: hover) and (pointer: fine) {
   .clients__track:hover {
-    -webkit-animation-play-state: paused;
     animation-play-state: paused;
-  }
-}
-@-webkit-keyframes scroll {
-  0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-  }
-  100% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
   }
 }
 @keyframes scroll {
   0% {
-    -webkit-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
+    transform: translateX(0);
   }
   100% {
-    -webkit-transform: translate3d(-50%, 0, 0);
-    transform: translate3d(-50%, 0, 0);
+    transform: translateX(-50%);
   }
 }
 .client-logo {
