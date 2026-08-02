@@ -1080,15 +1080,30 @@ a { color: inherit; text-decoration: none; }
   position: relative;
   overflow: hidden;
   width: 100%;
-  mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
-  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 8%, #000 92%, transparent 100%);
+}
+/* Fade edges via pseudo-elements — no mask-image (avoids Safari WebKit compositing bug) */
+.clients__track-wrap::before,
+.clients__track-wrap::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 8%;
+  z-index: 2;
+  pointer-events: none;
+}
+.clients__track-wrap::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--c-paper) 0%, transparent 100%);
+}
+.clients__track-wrap::after {
+  right: 0;
+  background: linear-gradient(270deg, var(--c-paper) 0%, transparent 100%);
 }
 .clients__track {
   display: flex;
   width: max-content;
   align-items: center;
-  animation: scroll 40s linear infinite;
-  will-change: transform;
 }
 .clients__group {
   display: flex;
@@ -1096,19 +1111,6 @@ a { color: inherit; text-decoration: none; }
   gap: 70px;
   padding-right: 70px;
   flex-shrink: 0;
-}
-@media (hover: hover) and (pointer: fine) {
-  .clients__track:hover {
-    animation-play-state: paused;
-  }
-}
-@keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
 }
 .client-logo {
   position: relative;
@@ -1119,10 +1121,10 @@ a { color: inherit; text-decoration: none; }
   cursor: pointer;
 }
 .client-logo img {
-  height: 38px; /* Proportioned height to match user UX layout */
+  height: 38px;
   width: auto;
   display: block;
-  transition: opacity var(--t-med);
+  transition: opacity 320ms ease;
 }
 .client-logo .logo-hover {
   position: absolute;

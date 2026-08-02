@@ -1,5 +1,6 @@
 /**
- * Componente Clients — Carrusel infinito de logotipos de clientes con hover interactivo
+ * Componente Clients — Carrusel infinito de logotipos de clientes
+ * Usa requestAnimationFrame para evitar bugs de Safari con CSS animations + mask-image
  */
 
 export function initClients() {
@@ -14,7 +15,7 @@ export function initClients() {
     { id: 4, name: "SJS Drywall", sand: "./Clients/Logo 4 Sand.svg", blue: "./Clients/Logo 4 Blue.svg" }
   ];
 
-  // Repetir los logos 3 veces por grupo (12 logos por grupo, 24 en total) para garantizar cobertura fluida en pantallas anchas
+  // Repetir logos suficientes veces para cubrir el ancho de pantalla + margen
   const groupLogos = [...CLIENT_LOGOS, ...CLIENT_LOGOS, ...CLIENT_LOGOS];
 
   const renderGroup = () => `
@@ -28,8 +29,43 @@ export function initClients() {
     </div>
   `;
 
-  // Renderizar 2 grupos idénticos para animación 0% a -50% perfecta en WebKit / Safari
+  // Renderizar 2 grupos idénticos — cuando el primero se desplaza fuera, se recicla
   track.innerHTML = renderGroup() + renderGroup();
+
+  // ── requestAnimationFrame marquee ──
+  const speed = 0.6; // px por frame (~36px/seg a 60fps)
+  let offset = 0;
+  let paused = false;
+  let rafId = null;
+
+  function getGroupWidth() {
+    const group = track.querySelector('.clients__group');
+    return group ? group.offsetWidth : 0;
+  }
+
+  function tick() {
+    if (!paused) {
+      const groupW = getGroupWidth();
+      if (groupW > 0) {
+        offset += speed;
+        if (offset >= groupW) {
+          offset -= groupW;
+        }
+        track.style.transform = `translateX(${-offset}px)`;
+      }
+    }
+    rafId = requestAnimationFrame(tick);
+  }
+
+  // Iniciar animación
+  rafId = requestAnimationFrame(tick);
+
+  // Pausar en hover (solo dispositivos con puntero fino)
+  const hasFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if (hasFinePointer) {
+    track.addEventListener('mouseenter', () => { paused = true; });
+    track.addEventListener('mouseleave', () => { paused = false; });
+  }
 
   // Touch/click toggle: activa la versión Blue en toque
   track.addEventListener('click', (e) => {
@@ -40,5 +76,13 @@ export function initClients() {
     });
     logo.classList.toggle('is-active');
   });
-}
 
+  // Pausar cuando la pestaña no es visible para ahorrar recursos
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) {
+      paused = true;
+    } else {
+      paused = false;
+    }
+  });
+}
